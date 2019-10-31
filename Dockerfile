@@ -12,5 +12,4 @@ ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
 RUN npm i npm@latest -g
 
 # install Firebase CLI
-RUN npm install -g firebase-tools@6.2.2
-
+RUN npm install -g firebase-tools@7.6.2
