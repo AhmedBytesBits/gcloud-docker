@@ -11,5 +11,8 @@ ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
 # update npm to patch any vulnerbalities
 RUN npm i npm@latest -g
 
+# intall ESlint
+RUN npm install -g eslint
+
 # install Firebase CLI
 RUN npm install -g firebase-tools@7.6.2
