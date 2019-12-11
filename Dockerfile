@@ -1,7 +1,7 @@
 # using node 8.1.1 the latest supported by firebase
 # using alpine to boost CI/CD pipline by using the lightweight linux alpine
 
-FROM node:8.11.1-alpine
+FROM node:8.16.2-alpine3.9
 
 USER node
 RUN mkdir /home/node/.npm-global
