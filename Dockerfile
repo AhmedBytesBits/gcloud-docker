@@ -1,7 +1,7 @@
 FROM gcr.io/google.com/cloudsdktool/cloud-sdk:latest
 
 ENV DOCKER_HOST: tcp://localhost:2375
-RUN apt install-y curl
+RUN apt install -y curl
 #RUN curl https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz > /tmp/google-cloud-sdk.tar.gz
 #RUN curl -sSL https://sdk.cloud.google.com > /tmp/gcl && bash /tmp/gcl --install-dir=~/gcloud --disable-prompts
 #ENV PATH $PATH:/root/google-cloud-sdk/bin
