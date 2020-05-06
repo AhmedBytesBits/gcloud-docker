@@ -1,18 +1,9 @@
-# using node 8.1.1 the latest supported by firebase
-# using alpine to boost CI/CD pipline by using the lightweight linux alpine
+FROM docker:latest
 
-FROM node:8.16.2-alpine3.9
-
-USER node
-RUN mkdir /home/node/.npm-global
-ENV PATH=/home/node/.npm-global/bin:$PATH
-ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
-
-# update npm to patch any vulnerbalities
-RUN npm i npm@latest -g
-
-# intall ESlint
-RUN npm install -g eslint
-
-# install Firebase CLI
-RUN npm install -g firebase-tools@7.6.2
+RUN curl https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz > /tmp/google-cloud-sdk.tar.gz
+RUN mkdir -p /usr/local/gcloud \
+  && tar -C /usr/local/gcloud -xvf /tmp/google-cloud-sdk.tar.gz \
+  && /usr/local/gcloud/google-cloud-sdk/install.sh
+ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+RUN chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
